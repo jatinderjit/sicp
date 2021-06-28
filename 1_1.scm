@@ -53,12 +53,12 @@
 ;;; Exercise 1.7
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (define (sqrt2 x)
-  (sqrt-recursive 1.0 x))
+  (sqrt-iter 1.0 x))
 
-(define (sqrt-recursive guess x)
+(define (sqrt-iter guess x)
   (if (good-enough? guess x)
     guess
-    (sqrt-recursive (improve guess x)
+    (sqrt-iter (improve guess x)
                     x)))
 
 ; This is the only change
@@ -78,12 +78,12 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Exercise 1.8
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(define (cube-root x) (cube-root-recursive 1.0 x))
+(define (cube-root x) (cube-root-iter 1.0 x))
 
-(define (cube-root-recursive guess x)
+(define (cube-root-iter guess x)
   (if (good-enough3? guess x)
     guess
-    (cube-root-recursive (improve3 guess x) x)))
+    (cube-root-iter (improve3 guess x) x)))
 
 (define (good-enough3? guess x)
   (< (/ (abs (- guess (improve3 guess x))) guess) 0.0001))
